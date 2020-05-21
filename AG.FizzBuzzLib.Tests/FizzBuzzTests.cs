@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 
 namespace AG.FizzBuzzLib.Tests
@@ -100,47 +101,53 @@ namespace AG.FizzBuzzLib.Tests
         [DataTestMethod]
         [DynamicData(nameof(GetFizzBuzzTestData), DynamicDataSourceType.Method)]
         public void PrintFizzBuzz_Returns_ExpectedResult_Using_DynamicData_Method(
-             int number, string expected, string message)
+             int number, string expected, string testNumber)
         {
+            // Arrange
+            const string message = "{0} Should Return {1}";
+
             // Act
             var actual = FizzBuzz.PrintFizzBuzz(number);
 
             // Assert
-            Assert.AreEqual(expected, actual, message);
+            Assert.AreEqual(expected, actual, $"{testNumber}. {message}", number, expected);
         }
 
         private static IEnumerable<object[]> GetFizzBuzzTestData()
         {
-            yield return new object[] { 1, "1", "#1. 1 Should Return 1" };
-            yield return new object[] { 3, "Fizz", "#2. 3 Should Return Fizz" };
-            yield return new object[] { 5, "Buzz", "#3. 5 Should Return Buzz" };
-            yield return new object[] { 15, "FizzBuzz", "#4. 15 Should Return FizzBuzz" };
-            yield return new object[] { 22, "22", "#5. 22 Should Return 22" };
-            yield return new object[] { 30, "FizzBuzz", "#6. 30 Should Return FizzBuzz" };
+            yield return new object[] { 1, "1", "#1" };
+            yield return new object[] { 3, "Fizz", "#2" };
+            yield return new object[] { 5, "Buzz", "#3" };
+            yield return new object[] { 15, "FizzBuzz", "#4" };
+            yield return new object[] { 22, "22", "#5" };
+            yield return new object[] { 30, "FizzBuzz", "#6" };
         }
 
         [DataTestMethod]
         [DynamicData(nameof(FizzBuzzTestData))]
         public void PrintFizzBuzz_Returns_ExpectedResult_Using_DynamicData_Property(
-            int number, string expected, string message)
+            int number, string expected, string testNumber)
         {
+            // Arrange
+            const string message = "{0} Should Return {1}";
+
             // Act
             var actual = FizzBuzz.PrintFizzBuzz(number);
 
             // Assert
-            Assert.AreEqual(expected, actual, message);
+            Assert.AreEqual(expected, actual, $"{testNumber}. {message}", number, expected);
         }
 
         private static IEnumerable<object[]> FizzBuzzTestData
         {
             get
             {
-                yield return new object[] { 1, "1", "#1 Should Return 1" };
-                yield return new object[] { 3, "Fizz", "#2 Should Return Fizz" };
-                yield return new object[] { 5, "Buzz", "#3 Should Return Buzz" };
-                yield return new object[] { 15, "FizzBuzz", "#4 Should Return FizzBuzz" };
-                yield return new object[] { 22, "22", "#5 Should Return 22" };
-                yield return new object[] { 30, "FizzBuzz", "#6 Should Return FizzBuzz" };
+                yield return new object[] { 1, "1", "#1" };
+                yield return new object[] { 3, "Fizz", "#2" };
+                yield return new object[] { 5, "Buzz", "#3" };
+                yield return new object[] { 15, "FizzBuzz", "#4" };
+                yield return new object[] { 22, "22", "#5" };
+                yield return new object[] { 30, "FizzBuzz", "#6" };
             }
         }
 
