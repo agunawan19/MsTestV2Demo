@@ -37,11 +37,11 @@ namespace AG.FizzBuzzLib
         {
             ThrowExceptionIfNumberIsNotWithinRange(number);
 
-            var result = string.Empty;
+            string result = null;
             if (number % 3 == 0) result = FizzText;
             if (number % 5 == 0) result += BuzzText;
 
-            return string.IsNullOrEmpty(result) ? number.ToString() : result;
+            return result ?? number.ToString();
         }
 
         private static void ThrowExceptionIfNumberIsNotWithinRange(int number)
