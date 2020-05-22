@@ -1,9 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
-[assembly: Parallelize(Workers = 4, Scope = ExecutionScope.MethodLevel)]
 namespace AG.FizzBuzzLib.Tests
 {
     [TestCategory("FizzBuzz Class Tests")]
