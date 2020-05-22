@@ -6,13 +6,13 @@ using System.Collections.Generic;
 namespace AG.FizzBuzzLib.Tests
 {
     [TestClass]
-    [TestCategory("FizBuzz Class Tests")]
     public class FizzBuzzTests
     {
         private static readonly FizzBuzz FizzBuzz = new FizzBuzz();
 
         #region MsTest v1
 
+        [TestCategory("PrintFizzBuzz Test")]
         [TestMethod]
         public void PrintFizzBuzz_Returns_ExpectedResult_Method1()
         {
@@ -41,6 +41,7 @@ namespace AG.FizzBuzzLib.Tests
             Assert.AreEqual(expected6, actual6);
         }
 
+        [TestCategory("PrintFizzBuzz Test")]
         [TestMethod]
         public void PrintFizzBuzz_Returns_ExpectedResult_Method2()
         {
@@ -72,6 +73,7 @@ namespace AG.FizzBuzzLib.Tests
 
         #region MsTest v2
 
+        [TestCategory("PrintFizzBuzz Test MsTest V2")]
         [DataTestMethod]
         [DataRow(1, "1")]
         [DataRow(3, "Fizz")]
@@ -82,6 +84,7 @@ namespace AG.FizzBuzzLib.Tests
         public void PrintFizzBuzz_Returns_ExpectedResult_Using_DataRow_1(int number, string expected) =>
             Assert.AreEqual(expected, FizzBuzz.PrintFizzBuzz(number));
 
+        [TestCategory("PrintFizzBuzz Test MsTest V2")]
         [DataTestMethod]
         [DataRow("#1 1 Should Return 1", 1, "1")]
         [DataRow("#2 3 Should Return Fizz", 3, "Fizz")]
@@ -98,6 +101,7 @@ namespace AG.FizzBuzzLib.Tests
             Assert.AreEqual(expected, actual, message);
         }
 
+        [TestCategory("PrintFizzBuzz Test MsTest V2")]
         [DataTestMethod]
         [DynamicData(nameof(GetFizzBuzzTestData), DynamicDataSourceType.Method)]
         public void PrintFizzBuzz_Returns_ExpectedResult_Using_DynamicData_Method(
@@ -123,6 +127,7 @@ namespace AG.FizzBuzzLib.Tests
             yield return new object[] { 30, "FizzBuzz", "#6" };
         }
 
+        [TestCategory("PrintFizzBuzz Test MsTest V2")]
         [DataTestMethod]
         [DynamicData(nameof(FizzBuzzTestData))]
         public void PrintFizzBuzz_Returns_ExpectedResult_Using_DynamicData_Property(
@@ -151,6 +156,7 @@ namespace AG.FizzBuzzLib.Tests
             }
         }
 
+        [TestCategory("PrintFizzBuzz Exception Test MsTest V2")]
         [DataTestMethod]
         [DataRow(-1)]
         [DataRow(0)]
@@ -158,6 +164,7 @@ namespace AG.FizzBuzzLib.Tests
         public void Can_Throw_Argument_Exception_When_Supplied_Number_Does_Not_Meet_Rule(int numberCount) =>
             Assert.ThrowsException<ArgumentException>(() => FizzBuzz.PrintFizzBuzz(numberCount));
 
+        [TestCategory("PrintFizzBuzzNumber Test MsTest V2")]
         [DataTestMethod]
         [DataRow(10, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz")]
         [DataRow(15, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz")]

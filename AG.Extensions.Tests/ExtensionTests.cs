@@ -7,6 +7,7 @@ namespace AG.Extensions.Tests
     [TestClass]
     public class ExtensionTests
     {
+        [TestCategory("IsBetween<int> Test")]
         [DataTestMethod]
         [DataRow(2, new[] { 1, 3 }, true, "#1")]
         [DataRow(1, new[] { 1, 3 }, true, "#2")]
@@ -26,6 +27,7 @@ namespace AG.Extensions.Tests
             Assert.AreEqual(expected, actual, message);
         }
 
+        [TestCategory("IsBetween<int> Test")]
         [DataTestMethod]
         [DataRow(2, new[] { 1, 3 }, true, "#1")]
         [DataRow(1, new[] { 1, 3 }, false, "#2")]
@@ -45,6 +47,7 @@ namespace AG.Extensions.Tests
             Assert.AreEqual(expected, actual, message);
         }
 
+        [TestCategory("IsBetween<DateTime> Test")]
         [DataTestMethod]
         [DynamicData(nameof(BetweenDateTimeInclusiveTestData))]
         public void IsBetweenTest_Inclusive_Returns_Correct_Result_For_DateTime_Type(string dateString,
@@ -78,6 +81,7 @@ namespace AG.Extensions.Tests
             }
         }
 
+        [TestCategory("IsBetween<DateTime> Test")]
         [DataTestMethod]
         [DynamicData(nameof(BetweenDateTimeExclusiveTestData))]
         public void IsBetweenTest_NotInclusive_Returns_Correct_Result_For_DateTime_Type(string dateString,
