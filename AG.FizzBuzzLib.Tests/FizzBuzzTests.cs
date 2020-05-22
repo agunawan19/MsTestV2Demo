@@ -93,7 +93,7 @@ namespace AG.FizzBuzzLib.Tests
         [DataRow("#4 15 Should Return FizzBuzz", 15, "FizzBuzz")]
         [DataRow("#5 22 Should Return 22", 22, "22")]
         [DataRow("#6 30 Should Return FizzBuzz", 30, "FizzBuzz")]
-        public void PrintFizzBuzz_Return_ExpectedResult_Using_DataRow_2(string message, int number, string expected)
+        public void PrintFizzBuzz_Returns_ExpectedResult_Using_DataRow_2(string message, int number, string expected)
         {
             // Act
             var actual = FizzBuzz.PrintFizzBuzz(number);
