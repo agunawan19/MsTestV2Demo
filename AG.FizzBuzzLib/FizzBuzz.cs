@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using AG.Extensions;
+using static System.Linq.Enumerable;
 
 namespace AG.FizzBuzzLib
 {
@@ -26,7 +28,9 @@ namespace AG.FizzBuzzLib
         /// <param name="numberCount"></param>
         /// <returns>a string of number or word separated by a space.</returns>
         public string PrintFizzBuzzNumbers(int numberCount) =>
-            string.Join(" ", Enumerable.Range(MinNumber, numberCount).Select(PrintFizzBuzz));
+            Range(MinNumber, numberCount)
+                .Select(PrintFizzBuzz)
+                .Aggregate((result, str) => $"{result} {str}");
 
         public string PrintFizzBuzz(int number)
         {
@@ -36,7 +40,7 @@ namespace AG.FizzBuzzLib
             if (number % 3 == 0) result = FizzText;
             if (number % 5 == 0) result += BuzzText;
 
-            return result ?? number.ToString();
+            return result ?? number.ToString(CultureInfo.InvariantCulture);
         }
 
         private static void ThrowExceptionIfNumberIsNotWithinRange(int number)
