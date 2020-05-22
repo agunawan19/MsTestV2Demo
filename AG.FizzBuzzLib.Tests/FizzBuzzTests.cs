@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace AG.FizzBuzzLib.Tests
 {
+    [TestCategory("FizzBuzz Class Tests")]
     [TestClass]
     public class FizzBuzzTests
     {

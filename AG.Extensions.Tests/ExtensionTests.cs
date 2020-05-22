@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace AG.Extensions.Tests
 {
+    [TestCategory("Extension Class Tests")]
     [TestClass]
     public class ExtensionTests
     {
