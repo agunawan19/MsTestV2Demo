@@ -31,17 +31,17 @@ namespace AG.FizzBuzzLib
         /// <param name="numberCount"></param>
         /// <returns>a string of number or word separated by a space.</returns>
         public string PrintFizzBuzzNumbers(int numberCount) =>
-            string.Join(" ", Enumerable.Range(MinNumber, numberCount).Select(PrintFizzBuzz));
+            string.Join(" ", Enumerable.Range(1, numberCount).Select(PrintFizzBuzz));
 
         public string PrintFizzBuzz(int number)
         {
             ThrowExceptionIfNumberIsNotWithinRange(number);
 
             var result = GetFizzBuzzResult(number);
-            if (string.IsNullOrEmpty(result)) result = GetFizzResult(number);
-            if (string.IsNullOrEmpty(result)) result = GetBuzzResult(number);
+            if (int.TryParse(result, out number)) result = GetFizzResult(number);
+            if (int.TryParse(result, out number)) result = GetBuzzResult(number);
 
-            return string.IsNullOrEmpty(result) ? number.ToString(CultureInfo.InvariantCulture) : result;
+            return int.TryParse(result, out number) ? number.ToString(CultureInfo.InvariantCulture) : result;
         }
 
         private static void ThrowExceptionIfNumberIsNotWithinRange(int number)
@@ -55,11 +55,11 @@ namespace AG.FizzBuzzLib
 
         private static bool IsBuzz(int number) => number % 5 == 0;
 
-        private static string GetFizzResult(int number) => IsFizz(number) ? FizzText : string.Empty;
+        private static string GetFizzResult(int number) => IsFizz(number) ? FizzText : number.ToString();
 
-        private static string GetBuzzResult(int number) => IsBuzz(number) ? BuzzText : string.Empty;
+        private static string GetBuzzResult(int number) => IsBuzz(number) ? BuzzText : number.ToString();
 
         private static string GetFizzBuzzResult(int number) =>
-            IsFizz(number) && IsBuzz(number) ? $"{FizzText}{BuzzText}" : string.Empty;
+            IsFizz(number) && IsBuzz(number) ? $"{FizzText}{BuzzText}" : number.ToString();
     }
 }
