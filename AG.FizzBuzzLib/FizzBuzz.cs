@@ -17,7 +17,7 @@ namespace AG.FizzBuzzLib
     {
         private static int MinNumber { get; } = 1;
         private static int MaxNumber { get; } = 100;
-        private static string FizzText { get; }= "Fizz";
+        private static string FizzText { get; } = "Fizz";
         private static string BuzzText { get; } = "Buzz";
 
         /// <summary>
