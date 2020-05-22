@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 [assembly: Parallelize(Workers = 4, Scope = ExecutionScope.MethodLevel)]
 namespace AG.FizzBuzzLib.Tests
@@ -159,17 +160,17 @@ namespace AG.FizzBuzzLib.Tests
 
         [TestCategory("PrintFizzBuzz Exception Test MsTest V2")]
         [DataTestMethod]
-        [DataRow(-1)]
-        [DataRow(0)]
-        [DataRow(101)]
+        [DataRow(-1, DisplayName = "-1 throws argument exception")]
+        [DataRow(0, DisplayName = "0 throws argument exception")]
+        [DataRow(101, DisplayName = "101 throws argument exception")]
         public void Can_Throw_Argument_Exception_When_Supplied_Number_Does_Not_Meet_Rule(int numberCount) =>
             Assert.ThrowsException<ArgumentException>(() => FizzBuzz.PrintFizzBuzz(numberCount));
 
         [TestCategory("PrintFizzBuzzNumber Test MsTest V2")]
         [DataTestMethod]
-        [DataRow(10, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz")]
-        [DataRow(15, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz")]
-        [DataRow(30, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz")]
+        [DataRow(10, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz", DisplayName = "#1 10 numbers test")]
+        [DataRow(15, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz", DisplayName = "#2 15 number test")]
+        [DataRow(30, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz", DisplayName = "#3 30 numbers test")]
         public void PrintFizzBuzzNumbers_Returns_Correct_Result(int numberCount, string expected)
         {
             // Act
