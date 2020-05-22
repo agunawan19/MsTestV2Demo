@@ -26,7 +26,7 @@ namespace AG.FizzBuzzLib
         /// <param name="numberCount"></param>
         /// <returns>a string of number or word separated by a space.</returns>
         public string PrintFizzBuzzNumbers(int numberCount) =>
-            string.Join(" ", Enumerable.Range(1, numberCount).Select(PrintFizzBuzz));
+            string.Join(" ", Enumerable.Range(MinNumber, numberCount).Select(PrintFizzBuzz));
 
         public string PrintFizzBuzz(int number)
         {
