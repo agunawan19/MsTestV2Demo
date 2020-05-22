@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 
+[assembly: Parallelize(Workers = 4, Scope = ExecutionScope.MethodLevel)]
 namespace AG.Extensions.Tests
 {
     [TestCategory("Extension Class Tests")]
