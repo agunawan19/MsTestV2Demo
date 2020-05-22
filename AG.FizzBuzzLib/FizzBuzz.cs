@@ -37,11 +37,11 @@ namespace AG.FizzBuzzLib
         {
             ThrowExceptionIfNumberIsNotWithinRange(number);
 
-            var result = GetFizzBuzzResult(number);
-            if (int.TryParse(result, out number)) result = GetFizzResult(number);
-            if (int.TryParse(result, out number)) result = GetBuzzResult(number);
+            var result = string.Empty;
+            if (number % 3 == 0) result = FizzText;
+            if (number % 5 == 0) result += BuzzText;
 
-            return int.TryParse(result, out number) ? number.ToString(CultureInfo.InvariantCulture) : result;
+            return string.IsNullOrEmpty(result) ? number.ToString() : result;
         }
 
         private static void ThrowExceptionIfNumberIsNotWithinRange(int number)
@@ -50,16 +50,5 @@ namespace AG.FizzBuzzLib
 
             throw new ArgumentException($"Entered number is {number}, entered number should be between {MinNumber} to {MaxNumber}");
         }
-
-        private static bool IsFizz(int number) => number % 3 == 0;
-
-        private static bool IsBuzz(int number) => number % 5 == 0;
-
-        private static string GetFizzResult(int number) => IsFizz(number) ? FizzText : number.ToString();
-
-        private static string GetBuzzResult(int number) => IsBuzz(number) ? BuzzText : number.ToString();
-
-        private static string GetFizzBuzzResult(int number) =>
-            IsFizz(number) && IsBuzz(number) ? $"{FizzText}{BuzzText}" : number.ToString();
     }
 }
