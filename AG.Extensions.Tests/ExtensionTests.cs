@@ -11,13 +11,13 @@ namespace AG.Extensions.Tests
     {
         [TestCategory("IsBetween<int> Test")]
         [DataTestMethod]
-        [DataRow(2, new[] { 1, 3 }, true, "#1")]
-        [DataRow(1, new[] { 1, 3 }, true, "#2")]
-        [DataRow(3, new[] { 1, 3 }, true, "#3")]
-        [DataRow(0, new[] { 1, 3 }, false, "#4")]
-        [DataRow(4, new[] { 1, 3 }, false, "#5")]
+        [DataRow(2, new[] { 1, 3 }, true, DisplayName = "#1. 2 is between 1 - 3")]
+        [DataRow(1, new[] { 1, 3 }, true, DisplayName = "#2. 1 is between 1 - 3")]
+        [DataRow(3, new[] { 1, 3 }, true, DisplayName = "#3. 3 is between 1 - 3")]
+        [DataRow(0, new[] { 1, 3 }, false, DisplayName = "#4. 0 is not between 1 - 3")]
+        [DataRow(4, new[] { 1, 3 }, false, DisplayName = "#5. 4 is not between 1 - 3")]
         public void IsBetweenTest_Inclusive_Returns_Correct_Result_For_Integer_Type(int numberToTest, int[] range,
-            bool expected, string message)
+            bool expected)
         {
             // Arrange
             var (lowerBound, upperBound) = (range[0], range[1]);
@@ -26,18 +26,18 @@ namespace AG.Extensions.Tests
             var actual = numberToTest.IsBetween(lowerBound, upperBound);
 
             // Assert
-            Assert.AreEqual(expected, actual, message);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("IsBetween<int> Test")]
         [DataTestMethod]
-        [DataRow(2, new[] { 1, 3 }, true, "#1")]
-        [DataRow(1, new[] { 1, 3 }, false, "#2")]
-        [DataRow(3, new[] { 1, 3 }, false, "#3")]
-        [DataRow(0, new[] { 1, 3 }, false, "#4")]
-        [DataRow(4, new[] { 1, 3 }, false, "#5")]
+        [DataRow(2, new[] { 1, 3 }, true, DisplayName = "#1. 2 is between 1 - 3")]
+        [DataRow(1, new[] { 1, 3 }, false, DisplayName = "#2. 1 is not between 1 - 3 (not inclusive)")]
+        [DataRow(3, new[] { 1, 3 }, false, DisplayName = "#3. 3 is not between 1 - 3 (not inclusive)")]
+        [DataRow(0, new[] { 1, 3 }, false, DisplayName = "#4. 0 is not between 1 - 3")]
+        [DataRow(4, new[] { 1, 3 }, false, DisplayName = "#5. 4 is not between 1 - 3")]
         public void IsBetweenTest_NotInclusive_Returns_Correct_Result_For_Integer_Type(int numberToTest, int[] range,
-            bool expected, string message)
+            bool expected)
         {
             // Arrange
             var (lowerBound, upperBound) = (range[0], range[1]);
@@ -46,7 +46,7 @@ namespace AG.Extensions.Tests
             var actual = numberToTest.IsBetween(lowerBound, upperBound, false);
 
             // Assert
-            Assert.AreEqual(expected, actual, message);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("IsBetween<DateTime> Test")]

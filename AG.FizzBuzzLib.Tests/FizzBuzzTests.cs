@@ -88,19 +88,19 @@ namespace AG.FizzBuzzLib.Tests
 
         [TestCategory("PrintFizzBuzz Test MsTest V2")]
         [DataTestMethod]
-        [DataRow("#1 1 Should Return 1", 1, "1")]
-        [DataRow("#2 3 Should Return Fizz", 3, "Fizz")]
-        [DataRow("#3 5 Should Return Buzz", 5, "Buzz")]
-        [DataRow("#4 15 Should Return FizzBuzz", 15, "FizzBuzz")]
-        [DataRow("#5 22 Should Return 22", 22, "22")]
-        [DataRow("#6 30 Should Return FizzBuzz", 30, "FizzBuzz")]
-        public void PrintFizzBuzz_Returns_ExpectedResult_Using_DataRow_2(string message, int number, string expected)
+        [DataRow(1, "1", DisplayName = "#1 1 Should Return 1")]
+        [DataRow(3, "Fizz", DisplayName = "#2 3 Should Return Fizz")]
+        [DataRow(5, "Buzz", DisplayName = "#3 5 Should Return Buzz")]
+        [DataRow(15, "FizzBuzz", DisplayName = "#4 15 Should Return FizzBuzz")]
+        [DataRow(22, "22", DisplayName = "#5 22 Should Return 22")]
+        [DataRow(30, "FizzBuzz", DisplayName = "#6 30 Should Return FizzBuzz")]
+        public void PrintFizzBuzz_Returns_ExpectedResult_Using_DataRow_2(int number, string expected)
         {
             // Act
             var actual = FizzBuzz.PrintFizzBuzz(number);
 
             // Assert
-            Assert.AreEqual(expected, actual, message);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("PrintFizzBuzz Test MsTest V2")]
@@ -160,16 +160,16 @@ namespace AG.FizzBuzzLib.Tests
 
         [TestCategory("PrintFizzBuzz Exception Test MsTest V2")]
         [DataTestMethod]
-        [DataRow(-1, DisplayName = "-1 throws argument exception")]
-        [DataRow(0, DisplayName = "0 throws argument exception")]
-        [DataRow(101, DisplayName = "101 throws argument exception")]
+        [DataRow(-1)]
+        [DataRow(0)]
+        [DataRow(101)]
         public void Can_Throw_Argument_Exception_When_Supplied_Number_Does_Not_Meet_Rule(int numberCount) =>
             Assert.ThrowsException<ArgumentException>(() => FizzBuzz.PrintFizzBuzz(numberCount));
 
         [TestCategory("PrintFizzBuzzNumber Test MsTest V2")]
         [DataTestMethod]
         [DataRow(10, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz", DisplayName = "#1 10 numbers test")]
-        [DataRow(15, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz", DisplayName = "#2 15 number test")]
+        [DataRow(15, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz", DisplayName = "#2 15 numbers test")]
         [DataRow(30, @"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz", DisplayName = "#3 30 numbers test")]
         public void PrintFizzBuzzNumbers_Returns_Correct_Result(int numberCount, string expected)
         {
