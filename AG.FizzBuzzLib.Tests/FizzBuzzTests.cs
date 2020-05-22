@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 
 [assembly: Parallelize(Workers = 4, Scope = ExecutionScope.MethodLevel)]
