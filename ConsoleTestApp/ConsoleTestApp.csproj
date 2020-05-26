@@ -54,6 +54,10 @@
       <Project>{1fefb6a4-36d0-49d1-9b3d-e35f23216402}</Project>
       <Name>AG.FizzBuzzLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AG.Tournaments\AG.Tournaments.csproj">
+      <Project>{27c5d3a8-fe8b-49fb-9b5f-0928b2861b89}</Project>
+      <Name>AG.Tournaments</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
